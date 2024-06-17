@@ -1,4 +1,4 @@
-// src/services/mockData.js
+// DONNEES MOCKES 
 export const USER_MAIN_DATA = [
   {
     id: 12,

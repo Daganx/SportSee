@@ -1,0 +1,25 @@
+.navbar-top {
+  height: 91px;
+  width: 100vw;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar-top img {
+  width: 178px;
+  padding-left: 16px;
+}
+.navbar-top nav {
+  display: flex;
+  padding-right: 72px;
+}
+.navbar-top ul {
+  display: flex;
+  gap: 180px;
+}
+
+.navbar-top a {
+  font-size: 24px;
+  color: white;
+}

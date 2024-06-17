@@ -1,0 +1,13 @@
+.navbar-side {
+  background: black;
+  position: fixed;
+  left: 0;
+  height: 100vh;
+  width: 117px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.navbar-side img {
+    
+}
