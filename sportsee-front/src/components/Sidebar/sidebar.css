@@ -1,13 +1,24 @@
 .navbar-side {
   background: black;
-  position: fixed;
-  left: 0;
-  height: 100vh;
+  height: 1024px;
   width: 117px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
-.navbar-side img {
-    
+.navbar-side ul {
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+}
+.navbar-side p {
+  padding-top: 32px;
+  color: white;
+}
+.sidebar-main-container {
+  display: flex;
+}
+.main-container {
+  width: 100%;
 }

@@ -9,10 +9,12 @@ const App = () => {
   return (
     <Router>
       <Navbar />
-      <Sidebar />
-      <main>
+      <section className="sidebar-main-container">
+        <Sidebar />
+      <main className="main-container">
         <h1>Main</h1>
       </main>
+      </section>
       <Routes>
         <Route>
           {/* ROUTE A METTRE POUR ACCUEIL ? */}
