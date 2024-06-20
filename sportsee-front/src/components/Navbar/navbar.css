@@ -1,6 +1,6 @@
 .navbar-top {
   height: 91px;
-  width: 100vw;
+  width: 100%;
   background-color: black;
   display: flex;
   align-items: center;
@@ -16,7 +16,7 @@
 }
 .navbar-top ul {
   display: flex;
-  gap: 180px;
+  gap: 100px;
 }
 
 .navbar-top a {

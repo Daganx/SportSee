@@ -1,24 +1,33 @@
 .navbar-side {
   background: black;
-  height: 1024px;
+  height: 768px;
   width: 117px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 .navbar-side ul {
   gap: 16px;
   display: flex;
   flex-direction: column;
 }
+.navbar-side li {
+  cursor: pointer;
+}
 .navbar-side p {
-  padding-top: 32px;
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 24px;
   color: white;
+  position: absolute;
+  bottom: 16px;
 }
 .sidebar-main-container {
   display: flex;
-}
-.main-container {
-  width: 100%;
+  width: 1024px;
 }

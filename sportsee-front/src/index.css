@@ -6,3 +6,16 @@
   text-decoration: none;
 }
 
+body {
+  max-width: 1024px;
+  max-height: 768px;
+  min-width: 1024px;
+  min-height: 768px;
+}
+
+#root {
+  max-width: 1024px;
+  min-width: 1024px;
+  max-height: 768px;
+  min-height: 768px;
+}
