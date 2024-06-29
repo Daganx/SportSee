@@ -32,35 +32,35 @@
 
 .bar-chart {
   grid-area: bar-chart;
-  background-color: #32cd32; /* green */
+  background-color: #FBFBFB;
   padding: 20px;
   border-radius: 8px;
 }
 
 .line-chart {
   grid-area: line-chart;
-  background-color: #9370db; /* purple */
+  background-color: #FBFBFB;
   padding: 20px;
   border-radius: 8px;
 }
 
 .radar-chart {
   grid-area: radar-chart;
-  background-color: #4682b4; /* blue */
+  background-color: #FBFBFB;
   padding: 20px;
   border-radius: 8px;
 }
 
 .radial-bar-chart {
   grid-area: radial-bar-chart;
-  background-color: #40e0d0; /* turquoise */
+  background-color: #FBFBFB;
   padding: 20px;
   border-radius: 8px;
 }
 
 .sidecard {
   grid-area: sidecard;
-  background-color: #dda0dd; /* plum */
+  background-color: #FBFBFB;
   padding: 20px;
   border-radius: 8px;
 }

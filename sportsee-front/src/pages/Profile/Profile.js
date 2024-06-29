@@ -7,6 +7,7 @@ import {
   getUserPerformance,
 } from "../../services/api.js";
 import "./profile.css";
+import BarChartComponent from "../../components/BarChart/BarChart.js";
 
 const Profile = () => {
   const { id } = useParams();
@@ -48,13 +49,15 @@ const Profile = () => {
         <h2>Félicitations ! Vous avez explosé vos objectifs hier 👏</h2>
       </header>
       <section className="main-content">
-        <section className="bar-chart">{/* CALL DE BAR CHART */}</section>
+        <section className="bar-chart">
+          <BarChartComponent data={userActivity.sessions} />
+        </section>
         <section className="line-chart">{/* CALL DE LINE CHART */}</section>
         <section className="radar-chart">{/* CALL DE RADAR CHART */}</section>
         <section className="radial-bar-chart">
           {/* CALL DE RADIAL BAR CHART */}
         </section>
-        <section className="sidecard">{/* CALL DE SIDECARD */}</section>
+        <section className="sidecard">{/* CALL DE SIDE CARD */}</section>
       </section>
     </section>
   );
