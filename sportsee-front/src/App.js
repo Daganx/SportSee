@@ -5,8 +5,8 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import Navbar from "./components/NavBar/NavBar.js";
-import Sidebar from "./components/SideBar/SideBar.js";
+import Navbar from "./components/Navbar/Navbar.js";
+import Sidebar from "./components/Sidebar/Sidebar.js";
 import MainContainer from "./components/MainContainer/MainContainer.js";
 import Profile from "./pages/Profile/Profile.js";
 import "./index.css";

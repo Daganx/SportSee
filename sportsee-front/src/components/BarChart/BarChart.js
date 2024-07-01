@@ -4,7 +4,7 @@ import {
   Bar,
   Tooltip,
   ResponsiveContainer,
-  CartesianGrid
+  CartesianGrid,
 } from "recharts";
 
 const BarChartComponent = ({ data }) => {
@@ -18,7 +18,6 @@ const BarChartComponent = ({ data }) => {
           left: 20,
           bottom: 5,
         }}
-        
       >
         <text
           x="30px"
@@ -29,7 +28,6 @@ const BarChartComponent = ({ data }) => {
         </text>
         <Tooltip />
         <CartesianGrid strokeDasharray="1 3" />
-
 
         <Bar dataKey="kilogram" name="Poids (kg)" fill="#000000" />
         <Bar dataKey="calories" name="Calories brûlées (kCal)" fill="#ff2501" />
