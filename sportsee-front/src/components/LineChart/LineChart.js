@@ -12,7 +12,7 @@ const LineChartComponent = ({ data }) => {
     <ResponsiveContainer width="100%" height="100%">
       <LineChart data={formattedData}>
         <XAxis dataKey="day" tickLine={false} />
-        <Tooltip/>
+        <Tooltip />
         <Line
           type="monotone"
           dataKey="sessionLength"

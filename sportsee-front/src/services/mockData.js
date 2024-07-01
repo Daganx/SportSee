@@ -8,7 +8,7 @@ export const USER_MAIN_DATA = [
     },
     todayScore: 0.12,
     keyData: {
-      calorieCount: 1930,
+      calorieCount: "1,930",
       proteinCount: 155,
       carbohydrateCount: 290,
       lipidCount: 50,

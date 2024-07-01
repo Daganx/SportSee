@@ -1,0 +1,5 @@
+div.recharts-legend-wrapper > ul {
+  display: flex;
+  justify-content: end;
+  gap: 20px;
+}
