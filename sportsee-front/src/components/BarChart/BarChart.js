@@ -2,35 +2,64 @@ import React from "react";
 import {
   BarChart,
   Bar,
+  XAxis,
+  YAxis,
   Tooltip,
   ResponsiveContainer,
   CartesianGrid,
 } from "recharts";
 
+const tickFormatter = (value, index) => {
+  return index + 1;
+};
+
 const BarChartComponent = ({ data }) => {
   return (
-    <ResponsiveContainer width="100%" height={300}>
-      <BarChart
-        data={data}
-        margin={{
-          top: 40,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-      >
-        <text
-          x="30px"
-          y="25px"
-          style={{ fontSize: 12, fontWeight: "bold", fill: "#000000" }}
-        >
-          Activité quotidienne
-        </text>
+    <ResponsiveContainer width="100%" height="100%">
+      <BarChart data={data} barGap={8} barCategoryGap={1}>
+        <CartesianGrid vertical={false} strokeDasharray="1 1" />
+        <XAxis
+          dataKey="day"
+          tickLine={false}
+          tick={{ fontSize: 14 }}
+          dy={10}
+          stroke="1 1"
+          tickFormatter={tickFormatter}
+        />
+        <YAxis
+          yAxisId="kilogram"
+          dataKey="kilogram"
+          type="number"
+          tickCount="4"
+          axisLine={false}
+          orientation="right"
+          tickLine={false}
+          tick={{ fontSize: 14 }}
+          dx={20}
+          domain={["dataMin - 2", "dataMax + 1"]}
+        />
+        <YAxis
+          yAxisId="calories"
+          dataKey="calories"
+          type="number"
+          domain={["dataMin - 20", "dataMax + 10"]}
+          hide={true}
+        />
         <Tooltip />
-        <CartesianGrid strokeDasharray="1 3" />
-
-        <Bar dataKey="kilogram" name="Poids (kg)" fill="#000000" />
-        <Bar dataKey="calories" name="Calories brûlées (kCal)" fill="#ff2501" />
+        <Bar
+          yAxisId="kilogram"
+          dataKey="kilogram"
+          fill="#282D30"
+          barSize={7}
+          radius={[50, 50, 0, 0]}
+        />
+        <Bar
+          yAxisId="calories"
+          dataKey="calories"
+          fill="#E60000"
+          barSize={7}
+          radius={[50, 50, 0, 0]}
+        />
       </BarChart>
     </ResponsiveContainer>
   );

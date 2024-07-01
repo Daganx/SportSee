@@ -1,5 +1,5 @@
 import React from "react";
-import { LineChart, Line, XAxis, ResponsiveContainer } from "recharts";
+import { LineChart, Line, XAxis, ResponsiveContainer, Tooltip } from "recharts";
 
 const LineChartComponent = ({ data }) => {
   const days = ["L", "M", "M", "J", "V", "S", "D"];
@@ -12,7 +12,7 @@ const LineChartComponent = ({ data }) => {
     <ResponsiveContainer width="100%" height="100%">
       <LineChart data={formattedData}>
         <XAxis dataKey="day" tickLine={false} />
-
+        <Tooltip/>
         <Line
           type="monotone"
           dataKey="sessionLength"

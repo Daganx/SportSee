@@ -6,12 +6,16 @@ import {
   getUserAverageSessions,
   getUserPerformance,
 } from "../../services/api.js";
-import "./profile.css";
 import BarChartComponent from "../../components/BarChart/BarChart.js";
 import SideCard from "../../components/SideCard/SideCard.js";
 import RadialBarChartScore from "../../components/RadialBarChart/RadialBarChart.js";
 import PerformanceRadarChart from "../../components/RadarChart/RadarChart.js";
 import LineChartComponent from "../../components/LineChart/LineChart.js";
+import caloriesIcon from "../../assets/images/sidecard-icons/calories.svg";
+import glucidesIcon from "../../assets/images/sidecard-icons/glucides.svg";
+import lipidesIcon from "../../assets/images/sidecard-icons/lipides.svg";
+import proteinesIcon from "../../assets/images/sidecard-icons/proteines.svg";
+import "./profile.css";
 
 const Profile = () => {
   const { id } = useParams();
@@ -19,6 +23,7 @@ const Profile = () => {
   const [userActivity, setUserActivity] = useState(null);
   const [userAverageSessions, setUserAverageSessions] = useState(null);
   const [userPerformance, setUserPerformance] = useState(null);
+  // eslint-disable-next-line
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -42,7 +47,7 @@ const Profile = () => {
     fetchData();
   }, [id]);
 
-  if (!userData) return <div>Chargement du profil...</div>;
+  if (!userData) return <p>Chargement du profil...</p>;
 
   const { keyData, todayScore, score } = userData;
   const userScore = todayScore || score;
@@ -73,25 +78,25 @@ const Profile = () => {
         </section>
         <section className="sidecard">
           <SideCard
-            icon="path/to/fire-icon.png"
+            icon={caloriesIcon}
             value={`${keyData.calorieCount}kCal`}
             label="Calories"
             bgColor="#FFEBE5"
           />
           <SideCard
-            icon="path/to/protein-icon.png"
+            icon={proteinesIcon}
             value={`${keyData.proteinCount}g`}
             label="Protéines"
             bgColor="#E5F1FF"
           />
           <SideCard
-            icon="path/to/carbs-icon.png"
+            icon={glucidesIcon}
             value={`${keyData.carbohydrateCount}g`}
             label="Glucides"
             bgColor="#FFF5DB"
           />
           <SideCard
-            icon="path/to/fat-icon.png"
+            icon={lipidesIcon}
             value={`${keyData.lipidCount}g`}
             label="Lipides"
             bgColor="#FFE5E5"
