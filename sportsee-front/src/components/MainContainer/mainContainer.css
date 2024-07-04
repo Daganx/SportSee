@@ -1,8 +1,6 @@
 .main-container {
-  height: 768px;
-  width: 907px;
   position: absolute;
-  background-color: white;
-  top: 91px;
-  left: 117px;
+  top: 70%;
+  left: 65%;
+  transform: translate(-55%, -65%);
 }

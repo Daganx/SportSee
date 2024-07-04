@@ -15,6 +15,31 @@ const tickFormatter = (value, index) => {
   return index + 1;
 };
 
+const CustomTooltip = ({ active, payload }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div style={styles.tooltipContainer}>
+        <p style={styles.label}>{`${payload[0].value} kg`}</p>
+        <p style={styles.label}>{`${payload[1].value} Kcal`}</p>
+      </div>
+    );
+  }
+
+  return null;
+};
+
+const styles = {
+  tooltipContainer: {
+    backgroundColor: "red",
+    padding: "15px 5px",
+    color: "white",
+    fontSize: "10px",
+  },
+  label: {
+    margin: 0,
+  },
+};
+
 const BarChartComponent = ({ data }) => {
   return (
     <ResponsiveContainer width="100%" height="100%">
@@ -70,7 +95,7 @@ const BarChartComponent = ({ data }) => {
           domain={["dataMin - 20", "dataMax + 10"]}
           hide={true}
         />
-        <Tooltip />
+        <Tooltip content={CustomTooltip} />
 
         <Bar
           yAxisId="kilogram"
