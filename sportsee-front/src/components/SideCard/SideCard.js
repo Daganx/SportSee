@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types"
 import "./sidecard.css";
 
 const SideCard = ({ icon, value, label, bgColor }) => {
@@ -23,6 +24,13 @@ const SideCard = ({ icon, value, label, bgColor }) => {
       </div>
     </div>
   );
+};
+
+SideCard.propTypes = {
+  icon: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  label: PropTypes.string.isRequired,
+  bgColor: PropTypes.string.isRequired,
 };
 
 export default SideCard;

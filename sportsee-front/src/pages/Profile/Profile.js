@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import {
   getUserData,
   getUserActivity,
@@ -51,6 +51,7 @@ const Profile = () => {
 
   const { keyData, todayScore, score } = userData;
   const userScore = todayScore || score;
+  const switchUserId = id === "12" ? "18" : "12";
 
   return (
     <section className="profile-container">
@@ -59,6 +60,9 @@ const Profile = () => {
           Bonjour <span>{userData.userInfos.firstName}</span>
         </h1>
         <h2>Félicitations ! Vous avez explosé vos objectifs hier 👏</h2>
+        <Link to={`/profile/${switchUserId}`}>
+          <button className="switch-user-btn">Changer de profil</button>
+        </Link>
       </header>
       <section className="main-content">
         <section className="bar-chart">

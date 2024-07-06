@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { LineChart, Line, XAxis, ResponsiveContainer, Tooltip } from "recharts";
 
 const LineChartComponent = ({ data }) => {
@@ -31,7 +32,10 @@ const LineChartComponent = ({ data }) => {
 
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <LineChart data={formattedData} margin={{ top: 50, right: 5, left: 5, bottom: 0 }}>
+      <LineChart
+        data={formattedData}
+        margin={{ top: 50, right: 5, left: 5, bottom: 0 }}
+      >
         <defs>
           <linearGradient id="gradientLine" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#FF8484" />
@@ -52,7 +56,7 @@ const LineChartComponent = ({ data }) => {
           stroke="url(#gradientLine)"
           strokeWidth={2}
           dot={false}
-          activeDot={{ r: 4 }}
+          activeDot={{ r: 2 }}
         />
         <text x="10" y="20" fill="#FF8484" textAnchor="start" fontSize={10}>
           Durée moyenne des{" "}
@@ -63,6 +67,15 @@ const LineChartComponent = ({ data }) => {
       </LineChart>
     </ResponsiveContainer>
   );
+};
+
+LineChartComponent.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      day: PropTypes.number.isRequired,
+      sessionLength: PropTypes.number.isRequired,
+    })
+  ).isRequired,
 };
 
 export default LineChartComponent;

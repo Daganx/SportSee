@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { RadialBarChart, RadialBar, ResponsiveContainer } from "recharts";
 
 const RadialBarChartScore = ({ score }) => {
@@ -68,6 +69,10 @@ const RadialBarChartScore = ({ score }) => {
       </ResponsiveContainer>
     </div>
   );
+};
+
+RadialBarChartScore.propTypes = {
+  score: PropTypes.number.isRequired,
 };
 
 export default RadialBarChartScore;
