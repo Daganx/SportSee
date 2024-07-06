@@ -10,7 +10,7 @@ import BarChartComponent from "../../components/BarChart/BarChart.js";
 import SideCard from "../../components/SideCard/SideCard.js";
 import RadialBarChartScore from "../../components/RadialBarChart/RadialBarChart.js";
 import PerformanceRadarChart from "../../components/RadarChart/RadarChart.js";
-import LineChartComponent from "../../components/LineChart/LineChart.js"; // Assurez-vous que l'importation est correcte
+import LineChartComponent from "../../components/LineChart/LineChart.js";
 import caloriesIcon from "../../assets/images/sidecard-icons/calories.svg";
 import glucidesIcon from "../../assets/images/sidecard-icons/glucides.svg";
 import lipidesIcon from "../../assets/images/sidecard-icons/lipides.svg";

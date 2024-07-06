@@ -17,7 +17,8 @@ const LineChartComponent = ({ data }) => {
             backgroundColor: "white",
             padding: "5px",
             color: "black",
-            fontSize:"10px"
+            fontSize: "10px",
+            fontWeight: "bold",
           }}
         >
           <p>{`${payload[0].value} min`}</p>
@@ -30,25 +31,34 @@ const LineChartComponent = ({ data }) => {
 
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <LineChart data={formattedData}>
+      <LineChart data={formattedData} margin={{ top: 50, right: 5, left: 5, bottom: 0 }}>
+        <defs>
+          <linearGradient id="gradientLine" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#FF8484" />
+            <stop offset="100%" stopColor="white" />
+          </linearGradient>
+        </defs>
         <XAxis
           dataKey="day"
           tickLine={false}
           axisLine={false}
-          tick={{ fill: "white" }}
+          tick={{ fill: "#FF8484" }}
           fontSize={"10px"}
         />
         <Tooltip content={<CustomTooltip />} cursor={false} />
         <Line
           type="monotone"
           dataKey="sessionLength"
-          stroke="#FFFFFF"
+          stroke="url(#gradientLine)"
           strokeWidth={2}
           dot={false}
           activeDot={{ r: 4 }}
         />
-        <text x="10" y="20" fill="#FF8181" textAnchor="start" fontSize={10}>
-          Durée moyenne des <tspan x="10" dy="12">sessions</tspan>
+        <text x="10" y="20" fill="#FF8484" textAnchor="start" fontSize={10}>
+          Durée moyenne des{" "}
+          <tspan x="10" dy="12">
+            sessions
+          </tspan>
         </text>
       </LineChart>
     </ResponsiveContainer>

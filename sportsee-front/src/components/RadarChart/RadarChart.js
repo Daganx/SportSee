@@ -17,7 +17,11 @@ const PerformanceRadarChart = ({ performanceData, kind }) => {
     <ResponsiveContainer width="100%" height="100%">
       <RadarChart cx="50%" cy="50%" outerRadius="60%" data={formattedData}>
         <PolarGrid />
-        <PolarAngleAxis dataKey="kind" fontSize={"7.6px"} tick={{fill:'white'}}/>
+        <PolarAngleAxis
+          dataKey="kind"
+          fontSize={"7.6px"}
+          tick={{ fill: "white" }}
+        />
 
         <Radar
           name="Performance"
