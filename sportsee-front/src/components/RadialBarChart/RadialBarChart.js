@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  RadialBarChart,
-  RadialBar,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
+import { RadialBarChart, RadialBar, ResponsiveContainer } from "recharts";
 
 const RadialBarChartScore = ({ score }) => {
   const data = [
@@ -15,43 +10,63 @@ const RadialBarChartScore = ({ score }) => {
     },
   ];
 
+  // Calculer l'angle de fin en fonction du score
+  const endAngle = 90 + 360 * score;
+
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <RadialBarChart
-        cx="50%"
-        cy="50%"
-        innerRadius="70%"
-        outerRadius="80%"
-        barSize={10}
-        data={data}
-        startAngle={90}
-        endAngle={-270}
-      >
-        <RadialBar minAngle={15} background clockWise dataKey="uv" />
-        <text
-          x="50%"
-          y="50%"
-          textAnchor="middle"
-          dominantBaseline="middle"
-          className="progress-label"
-          style={{ fontSize: 18, fontWeight: "bold" }}
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        backgroundColor: "#f2f2f2",
+        borderRadius: "10px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        position: "relative",
+      }}
+    >
+      <ResponsiveContainer width="100%" height="100%">
+        <RadialBarChart
+          cx="50%"
+          cy="50%"
+          innerRadius="70%"
+          outerRadius="80%"
+          barSize={20}
+          data={data}
+          startAngle={90}
+          endAngle={endAngle}
         >
-          {`${data[0].uv}%`}
-        </text>
-        <Legend
-          iconSize={10}
-          layout="vertical"
-          verticalAlign="middle"
-          wrapperStyle={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            lineHeight: "24px",
-          }}
-        />
-      </RadialBarChart>
-    </ResponsiveContainer>
+          <circle cx="50%" cy="50%" r="35%" fill="#ffffff" />
+          <RadialBar minAngle={15} background clockWise dataKey="uv" />
+          <text
+            x="50%"
+            y="45%"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            className="progress-label"
+            style={{ fontSize: 24, fontWeight: "bold" }}
+          >
+            {`${data[0].uv}%`}
+          </text>
+          <text
+            x="50%"
+            y="60%"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            className="progress-legend"
+            style={{ fontSize: 12, fill: "#888888" }}
+          >
+            <tspan x="50%" dy="0">
+              de votre
+            </tspan>
+            <tspan x="50%" dy="1.2em">
+              objectif
+            </tspan>
+          </text>
+        </RadialBarChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 

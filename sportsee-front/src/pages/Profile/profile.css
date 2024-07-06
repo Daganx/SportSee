@@ -57,7 +57,6 @@
 .radial-bar-chart {
   grid-area: radial-bar-chart;
   background-color: #fbfbfb;
-  padding: 20px;
   border-radius: 8px;
 }
 

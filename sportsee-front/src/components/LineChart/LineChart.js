@@ -16,8 +16,8 @@ const LineChartComponent = ({ data }) => {
           style={{
             backgroundColor: "white",
             padding: "5px",
-            borderRadius: "5px",
             color: "black",
+            fontSize:"10px"
           }}
         >
           <p>{`${payload[0].value} min`}</p>
@@ -45,10 +45,10 @@ const LineChartComponent = ({ data }) => {
           stroke="#FFFFFF"
           strokeWidth={2}
           dot={false}
-          activeDot={{ r: 8 }}
+          activeDot={{ r: 4 }}
         />
-        <text x="10" y="20" fill="white" textAnchor="start" fontSize={"10px"}>
-          Durée moyenne des sessions
+        <text x="10" y="20" fill="#FF8181" textAnchor="start" fontSize={10}>
+          Durée moyenne des <tspan x="10" dy="12">sessions</tspan>
         </text>
       </LineChart>
     </ResponsiveContainer>
