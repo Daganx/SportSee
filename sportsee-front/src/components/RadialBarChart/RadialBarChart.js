@@ -11,7 +11,6 @@ const RadialBarChartScore = ({ score }) => {
     },
   ];
 
-  // Calculer l'angle de fin en fonction du score
   const endAngle = 90 + 360 * score;
 
   return (

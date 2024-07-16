@@ -6,6 +6,12 @@ import {
   getUserAverageSessions,
   getUserPerformance,
 } from "../../services/api.js";
+import {
+  getMockUserData,
+  getMockUserActivity,
+  getMockUserAverageSessions,
+  getMockUserPerformance,
+} from "../../services/apiMock.js";
 import BarChartComponent from "../../components/BarChart/BarChart.js";
 import SideCard from "../../components/SideCard/SideCard.js";
 import RadialBarChartScore from "../../components/RadialBarChart/RadialBarChart.js";
@@ -23,8 +29,9 @@ const Profile = () => {
   const [userActivity, setUserActivity] = useState(null);
   const [userAverageSessions, setUserAverageSessions] = useState(null);
   const [userPerformance, setUserPerformance] = useState(null);
-  // eslint-disable-next-line
   const [loading, setLoading] = useState(true);
+  // eslint-disable-next-line
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,8 +45,23 @@ const Profile = () => {
         setUserActivity(activity);
         setUserAverageSessions(sessions);
         setUserPerformance(performance);
-        setLoading(false);
       } catch (error) {
+        console.error(
+          "Failed to fetch data from backend, using mock data",
+          error
+        );
+        setError("Failed to fetch data from backend, using mock data");
+
+        const user = await getMockUserData(id);
+        const activity = await getMockUserActivity(id);
+        const sessions = await getMockUserAverageSessions(id);
+        const performance = await getMockUserPerformance(id);
+
+        setUserData(user);
+        setUserActivity(activity);
+        setUserAverageSessions(sessions);
+        setUserPerformance(performance);
+      } finally {
         setLoading(false);
       }
     };
@@ -47,7 +69,8 @@ const Profile = () => {
     fetchData();
   }, [id]);
 
-  if (!userData) return <p>Chargement du profil...</p>;
+  if (loading) return <p>Chargement du profil...</p>;
+  if (!userData) return <p>Aucune donnée utilisateur disponible</p>;
 
   const { keyData, todayScore, score } = userData;
   const userScore = todayScore || score;
@@ -66,45 +89,55 @@ const Profile = () => {
       </header>
       <section className="main-content">
         <section className="bar-chart">
-          <BarChartComponent data={userActivity.sessions} />
+          {userActivity && userActivity.sessions && (
+            <BarChartComponent data={userActivity.sessions} />
+          )}
         </section>
         <section className="line-chart">
-          <LineChartComponent data={userAverageSessions.sessions} />
+          {userAverageSessions && userAverageSessions.sessions && (
+            <LineChartComponent data={userAverageSessions.sessions} />
+          )}
         </section>
         <section className="radar-chart">
-          <PerformanceRadarChart
-            performanceData={userPerformance.data}
-            kind={userPerformance.kind}
-          />
+          {userPerformance && userPerformance.data && userPerformance.kind && (
+            <PerformanceRadarChart
+              performanceData={userPerformance.data}
+              kind={userPerformance.kind}
+            />
+          )}
         </section>
         <section className="radial-bar-chart">
-          <RadialBarChartScore score={userScore} />
+          {userScore !== undefined && <RadialBarChartScore score={userScore} />}
         </section>
         <section className="sidecard">
-          <SideCard
-            icon={caloriesIcon}
-            value={`${keyData.calorieCount}kCal`}
-            label="Calories"
-            bgColor="#FFEBE5"
-          />
-          <SideCard
-            icon={proteinesIcon}
-            value={`${keyData.proteinCount}g`}
-            label="Protéines"
-            bgColor="#E5F1FF"
-          />
-          <SideCard
-            icon={glucidesIcon}
-            value={`${keyData.carbohydrateCount}g`}
-            label="Glucides"
-            bgColor="#FFF5DB"
-          />
-          <SideCard
-            icon={lipidesIcon}
-            value={`${keyData.lipidCount}g`}
-            label="Lipides"
-            bgColor="#FFE5E5"
-          />
+          {keyData && (
+            <>
+              <SideCard
+                icon={caloriesIcon}
+                value={`${keyData.calorieCount}kCal`}
+                label="Calories"
+                bgColor="#FFEBE5"
+              />
+              <SideCard
+                icon={proteinesIcon}
+                value={`${keyData.proteinCount}g`}
+                label="Protéines"
+                bgColor="#E5F1FF"
+              />
+              <SideCard
+                icon={glucidesIcon}
+                value={`${keyData.carbohydrateCount}g`}
+                label="Glucides"
+                bgColor="#FFF5DB"
+              />
+              <SideCard
+                icon={lipidesIcon}
+                value={`${keyData.lipidCount}g`}
+                label="Lipides"
+                bgColor="#FFE5E5"
+              />
+            </>
+          )}
         </section>
       </section>
     </section>
