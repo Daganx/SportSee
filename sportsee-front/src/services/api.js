@@ -1,3 +1,5 @@
+import { User, Activity, AverageSessions, Performance } from "./models.js";
+
 const API_URL = "http://localhost:3000";
 
 const getUserData = async (userId) => {
@@ -7,7 +9,7 @@ const getUserData = async (userId) => {
   }
   const { data } = await response.json();
   console.log("User Data:", data);
-  return data;
+  return new User(data);
 };
 
 const getUserActivity = async (userId) => {
@@ -17,7 +19,7 @@ const getUserActivity = async (userId) => {
   }
   const { data } = await response.json();
   console.log("User Activity:", data);
-  return data;
+  return new Activity(data);
 };
 
 const getUserAverageSessions = async (userId) => {
@@ -27,7 +29,7 @@ const getUserAverageSessions = async (userId) => {
   }
   const { data } = await response.json();
   console.log("User Average Sessions:", data);
-  return data;
+  return new AverageSessions(data);
 };
 
 const getUserPerformance = async (userId) => {
@@ -37,7 +39,7 @@ const getUserPerformance = async (userId) => {
   }
   const { data } = await response.json();
   console.log("User Performance:", data);
-  return data;
+  return new Performance(data);
 };
 
 export {
